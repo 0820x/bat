@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>bat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.pinimg.com/originals/91/fc/54/91fc549c130f969b61afa9065ad2132d.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            background-color: #d2d2d2; 
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(51, 51, 51, 0.7); 
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(34, 34, 34, 0.5);
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .social-buttons {
+            margin-top: 10px;
+        }
+        .social-buttons a {
+            display: inline-block;
+            width: 60px; 
+            height: 60px; 
+            background-size: cover;
+            border-radius: 50%;
+        }
+        .twitter {
+            background-image: url('twitter.png');
+        }
+        .discord {
+            background-image: url('dcord.png');
+        }
+        .github {
+            width: 50%;
+            height: 50%;
+            background-image: url('github.png');
+        }
+        .name {
+            font-size: 40px;
+            font-weight: bold;
+            animation: rainbow-text 4s linear infinite;
+        }
+        .about-me {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        .music-player {
+            background-color: #222; 
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 20px;
+            height: 50%;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto; /* Center the music player horizontally */
+        }
+        .music-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .music-thumbnail {
+            width: 100px; 
+            height: 100px; 
+            border-radius: 5px;
+            margin-right: 10px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .music-details {
+            text-align: center;
+        }
+        .music-title {
+            font-weight: bold;
+            font-size: 18px; 
+        }
+        .music-artist {
+            font-style: italic;
+        }
+        .music-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .music-button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 5px; 
+            border-radius: 3px;
+            cursor: pointer;
+            width: 30px; 
+            height: 30px; 
+            margin-right: 10px;
+            background-image: url('play.png');
+            background-size: 60%; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+        }
+        .music-volume {
+            width: 100px;
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: #333;
+            height: 5px;
+            border-radius: 5px;
+            outline: none;
+            margin: 0 10px;
+        }
+        .music-volume::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background-color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        @keyframes rainbow-text {
+            0% { color: red; }
+            16.666% { color: orange; }
+            33.333% { color: yellow; }
+            50% { color: green; }
+            66.666% { color: blue; }
+            83.333% { color: indigo; }
+            100% { color: violet; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="pfp.jpg" class="profile-pic">
+        <div class="name">bat</div>
+        <div class="about-me">"women are a mystery to me"<br>- Steven Hawking</div>
+        <div class="social-buttons">
+            <a href="https://twitter.com/" target="_blank" class="twitter"></a>
+            <a href="https://discord.gg/" target="_blank" class="discord"></a>
+            <a href="https:/github.com/" target="_blank" class="github"></a>
+        </div>
+        <div class="music-player">
+            <div class="music-info">
+                <div class="music-thumbnail" style="background-image: url('carnival.jpg')"></div>
+                <div class="music-details">
+                    <div class="music-title">Carnival</div>
+                    <div class="music-artist">Kanye West</div>
+                </div>
+            </div>
+            <div class="music-controls">
+                <button onclick="toggleMusic()" class="music-button" id="play-pause"></button>
+                <input type="range" min="0" max="100" value="100" class="music-volume" id="volume-slider">
+            </div>
+        </div>
+        <audio id="music" src="carnival.mp3"></audio>
+    </div>
+    <script>
+        var music = document.getElementById("music");
+        var playPauseButton = document.getElementById("play-pause");
+        var volumeSlider = document.getElementById("volume-slider");
+
+        playPauseButton.style.backgroundImage = "url('play.png')";
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                playPauseButton.style.backgroundImage = "url('pause.png')";
+            } else {
+                music.pause();
+                playPauseButton.style.backgroundImage = "url('play.png')";
+            }
+        }
+
+        volumeSlider.oninput = function() {
+            music.volume = volumeSlider.value / 100;
+        }
+    </script>
+</body>
+</html>
